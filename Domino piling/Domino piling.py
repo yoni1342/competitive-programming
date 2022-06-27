@@ -1,7 +1,7 @@
-import math
+m = int(input("Enter M: "))
+n = int(input("Enter N: "))
 
+parameter = m*n
+max_number_of_domino = int(parameter/2)
 
-def Domino(M,N):
-    return math.floor((M*N)/2)
-
-print(Domino(4, 3))
+print(max_number_of_domino)
