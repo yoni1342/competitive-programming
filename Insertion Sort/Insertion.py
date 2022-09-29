@@ -1,13 +1,9 @@
-arr = [1,2,4,5,3]
-
-def insertionSort1(n,arr):
-    temp = arr[-1]
-    i = n-1
-    while i>0 and arr[i-1]>temp:
-        arr[i] = arr[i-1]
+for i in range(n-1,-1,-1):
+    temp = arr[i]
+    j=i-1
+    while j>=0 and arr[j]>temp:
+        arr[j+1]=arr[j]
+        j-=1
         print(*arr)
-        i-=1
-    arr[i] = temp
-    print(*arr)
-    
-insertionSort1(5,arr)
+    arr[j+1] = temp
+print(*arr)
