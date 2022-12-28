@@ -1,11 +1,12 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        count = 0
-        n = len(nums)
-        for i in range(n-1):
-            j = i+1
-            while j < n:
-                if nums[i] == nums[j]:
-                    count += 1
-                j += 1
-        return count
+        answer = 0
+#         first we Hash nums 
+        Hash = Counter(nums)
+        
+#       then we calculate the sum of reptetion of the duplicated items using k*(k-1)/2
+        
+        for i in Hash.values():
+            answer += (i*(i-1))//2
+        
+        return answer
