@@ -1,17 +1,11 @@
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        winHash = {}
-        lossHash = {}
+        winHash = defaultdict(int)
+        lossHash = defaultdict(int)
         answer = [[],[]]
         for win,loss in matches:
-            if win in winHash:
-                winHash[win] +=1
-            else:
-                winHash[win] = 1
-            if loss in lossHash:
-                lossHash[loss] +=1
-            else:
-                lossHash[loss] = 1
+            winHash[win]+=1
+            lossHash[loss]+=1
         
         for i in winHash:
             if i not in lossHash:
