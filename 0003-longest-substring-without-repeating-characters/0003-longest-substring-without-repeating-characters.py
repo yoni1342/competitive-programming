@@ -1,14 +1,21 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        l,r=0,0
+        left = 0
+        right = 0
+        
+        # count that counts the longest substring in the string
+        count = 0
+        
+        # to check if the char are not repeated we use set
         unique = set()
-        Long = 0
-        while r<len(s):
-            while s[r] in unique:
-                unique.remove(s[l])
-                l+=1
-            unique.add(s[r])
-            Long =max(Long, r-l+1)
-            r+=1
-        return Long
+        
+        while right<len(s):
+            while s[right] in unique:
+                unique.remove(s[left])
+                left+=1
+            unique.add(s[right])
+            count = max(count, right-left+1)
             
+            right+=1
+        
+        return count
