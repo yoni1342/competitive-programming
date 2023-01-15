@@ -3,25 +3,19 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        length = len(matrix)
+        left, right = 0 , len(matrix)-1
         
-        for layer in range(length//2):
-            n = length-1
-            loop = n-(2*layer)
+        while left<right:
             
-            for ele in range(loop):
-                row = layer
-                col = ele+layer
-                prev = matrix[row][col] 
+            for i in range(right-left):
+                top, buttom = left, right
                 
-                for _ in range(4):
-                    # the next cordinate after we rotate for (row, col) is (col, n-row)
-                    val = matrix[col][n-row]
-                    matrix[col][n-row] = prev
-                    prev = val
-                    
-                    temp = col
-                    col = n-row
-                    row = temp
-        
-        return matrix
+                topleft = matrix[top][left+i]
+                
+                matrix[top][left+i] = matrix[buttom-i][left]
+                matrix[buttom-i][left] = matrix[buttom][right-i]
+                matrix[buttom][right-i] = matrix[top+i][right]
+                matrix[top+i][right] = topleft
+            
+            left+=1
+            right-=1
