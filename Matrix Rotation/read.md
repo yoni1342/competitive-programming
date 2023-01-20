@@ -16,6 +16,7 @@ in each column, the first element is smaller than the second element.
 You can perform the following operation on the matrix any number of times: rotate it clockwise by 90
  degrees, so the top left element shifts to the top right cell, the top right element shifts to the bottom right cell, and so on:
 
+<img class="tex-graphics" src="https://espresso.codeforces.com/ae24ecc4cb629f9d3369e86a45b651023e45cf29.png" style="max-width: 100.0%;max-height: 100.0%;">
 
 Determine if it is possible to make the matrix beautiful by applying zero or more operations.
 
