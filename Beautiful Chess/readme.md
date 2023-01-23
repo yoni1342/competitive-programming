@@ -1,8 +1,9 @@
-C. Beautiful Chess
-time limit per test1 s.
-memory limit per test256 MB
-inputstandard input
-outputstandard output
+                                                           C. Beautiful Chess
+                                                           time limit per test1 s.
+                                                           memory limit per test256 MB
+                                                           inputstandard input
+                                                           outputstandard output
+                                                           
 Süha has an 8×8
  chessboard whose rows are numbered from 1
  to 8
