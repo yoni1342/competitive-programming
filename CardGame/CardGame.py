@@ -1,26 +1,40 @@
-tt = int(input())
+n = int(input())
 
-while tt:
-    a = list(input()) 
-    p1 = 0
-    p2 = 1
-    res = set()
-    n = len(a)
-    while p1<len(a) and p2<len(a):
-        if a[p1] != a[p2]:
-            res.add(a[p1])
-            if p2 == n-1:
-                res.add(a[p2])
-            p1+=1
-            p2+=1
-        elif a[p1] == a[p2]:
-            if p2 == n-2:
-                res.add(a[-1])
-            p2+=2
-            p1+=2
-    if n==1:
-        res.add(a[0])
-    
-    ans = sorted(res)
-    print(''.join(ans))
-    tt-=1
+a = list(map(int, input().split()))
+webe = 0
+henok = 0
+
+right = n-1
+left = 0
+turn = 0
+while left < right:
+    if a[left]>a[right] and turn==0:
+        webe += a[left]
+        left += 1
+        turn = 1
+    elif a[left]<a[right] and turn==0:
+        webe += a[right]
+        right -= 1
+        turn = 1
+    elif a[left]>a[right] and turn==1:
+        henok += a[left]
+        left += 1
+        turn = 0
+    elif a[left]<a[right] and turn==1:
+        henok += a[right]
+        right -= 1
+        turn = 0
+    elif a[left]==a[right] and turn==0:
+        webe += a[left]
+        left += 1
+        turn = 1
+    elif a[left]==a[right] and turn==1:
+        henok += a[left]
+        left += 1
+        turn = 0
+if left==right:
+    if turn==0:
+        webe += a[left]
+    else:
+        henok += a[left]
+print(webe, henok)
