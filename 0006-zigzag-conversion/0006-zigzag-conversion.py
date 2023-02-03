@@ -30,4 +30,3 @@ class Solution:
                 if matrix[i][j] != 0:
                     ans += (matrix[i][j])
         return ans
-                
