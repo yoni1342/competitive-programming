@@ -1,20 +1,16 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        nums.sort()
-        
-        left = 0 
-        right = len(nums)-1
-        
+        Hash = defaultdict(int)
         ans = 0
         
-        while left<right:
-            if nums[left]+nums[right] == k:
+        for num in nums:
+            if k-num in Hash:
                 ans+=1
-                left+=1
-                right-=1
-            elif nums[left]+nums[right] < k:
-                left+=1
+                Hash[k-num]-=1
+                
+                if Hash[k-num] == 0:
+                    del Hash[k-num]
             else:
-                right-=1
+                Hash[num]+=1
         
         return ans
