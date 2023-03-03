@@ -1,9 +1,7 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
         left = 0
-        if x ==1:
-            return 1
-        right = x//2
+        right = x
         ans = 0
         
         while left<=right:
