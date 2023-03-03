@@ -1,11 +1,22 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
-        return int(sqrt(x))
-#         left = 1
-#         right = x//2
+        left = 0
+        if x ==1:
+            return 1
+        right = x//2
+        ans = 0
         
-#         while left<=right:
-#             mid = left+(right-left)//2
+        while left<=right:
+            mid = left+(right-left)//2
             
-#             mid*mid
+            if mid*mid<x:
+                ans = mid
+                left = mid+1
+            elif mid*mid > x:
+                right = mid-1
+            else:
+                ans = mid
+                break
+        
+        return ans
         
