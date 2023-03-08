@@ -8,14 +8,24 @@ class Solution:
     def __init__(self):
         self.ans = 0
     def sumEvenGrandparent(self, root: TreeNode) -> int:
-        self.dfs(root,-1,-1 )
+        self.dfs(root)
         return self.ans
     
-    def dfs(self, curNode, parent, gran):
+    def dfs(self, curNode):
         if not curNode:
-            return
-        if gran % 2 == 0:
-            self.ans += curNode.val
+            return 
         
-        self.dfs(curNode.left, curNode.val, parent)        
-        self.dfs(curNode.right, curNode.val, parent)
+        if curNode.val % 2 == 0:
+            if curNode.left:
+                self.Sum(curNode.left)
+            if curNode.right:
+                self.Sum(curNode.right)
+        
+        self.dfs(curNode.left)
+        self.dfs(curNode.right)
+            
+    def Sum (self, node):
+        if node.left:
+            self.ans += node.left.val
+        if node.right:
+            self.ans += node.right.val
