@@ -16,8 +16,8 @@ class Solution:
             
             return 
         
-        if idx >= self.n:
-            return
+        # if idx >= self.n:
+        #     return
         
         for i in range(idx,self.n):
             
