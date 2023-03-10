@@ -6,18 +6,17 @@
 #         self.right = right
 class Solution:
     def __init__(self):
-        self.inorder = []
+        self.temp = float("-inf")
+        self.ans = True
         
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         self.rec(root)
-        i = 0
-        while i < len(self.inorder)-1:
-            if self.inorder[i]>=self.inorder[i+1]:
-                return False
-            i+=1
-        return True
+        return self.ans
     def rec(self, curNode):
         if curNode:
             self.rec(curNode.left)
-            self.inorder.append(curNode.val)
+            if self.temp >= curNode.val:
+                self.ans = False
+                return
+            self.temp = curNode.val
             self.rec(curNode.right)
