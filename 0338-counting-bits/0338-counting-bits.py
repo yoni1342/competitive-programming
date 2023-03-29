@@ -6,7 +6,7 @@ class Solution:
             count = 0
             bit = i
             while bit:
-                if bit%2!=0:
+                if bit & 1 != 0:
                     bit = bit >> 1
                     count+=1
                 else:
