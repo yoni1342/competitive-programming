@@ -5,7 +5,7 @@ class Solution:
         
         for i,val in enumerate(words):
             res = 0
-            for j in val:
+            for j in set(val):
                 mask = 1 << ord(j)-96
                 res |= mask
             Hash[i] = res
