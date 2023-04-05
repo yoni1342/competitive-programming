@@ -1,20 +1,12 @@
 class Solution:
     def countMaxOrSubsets(self, nums: List[int]) -> int:
-        ans = defaultdict(int)
+        count = defaultdict(int)
+        count[0]+=1
         
-        for i in range(2**len(nums)):
-            sub = []
-            idx = 0
-            while i:
-                if i & 1 == 1:
-                    sub.append(nums[idx])
-                i>>=1
-                idx+=1
+        for num in nums:
+            keyval = list(count.items())
             
-            res = 0
-            for i in sub:
-                res |= i
-            
-            ans[res]+=1
+            for key, val in (keyval):
+                count[ key | num] += val
         
-        return ans[max(ans)]
+        return count[max(count)]
