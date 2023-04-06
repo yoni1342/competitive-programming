@@ -7,16 +7,16 @@ class Solution:
         def back(idx):
             nonlocal tester
             if idx == len(nums):
-                ans.append(path.copy())
+                ans.append(path[:])
                 return 
             
             for i in range(len(nums)):
-                if tester & (1 << i) == 0:
-                    tester |= 1 << i
+                if (1<<i) & tester == 0:
+                    tester |= 1<<i
                     path.append(nums[i])
                     back(idx+1)
                     path.pop()
-                    tester ^= 1 << i
+                    tester &= ~(1<<i)
         
         back(0)
         return ans
