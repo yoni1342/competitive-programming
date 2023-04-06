@@ -1,15 +1,22 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         ans = []
+        path = []
+        tester = 0
         
-        def backtrack(nums, path):
-            if len(nums) == 0:
-                ans.append(path[:])
-                return
+        def back(idx):
+            nonlocal tester
+            if idx == len(nums):
+                ans.append(path.copy())
+                return 
             
             for i in range(len(nums)):
-                backtrack(nums[:i] + nums[i+1:], path + [nums[i]])
-                
-                
-        backtrack(nums, [])
-        return ans  
+                if tester & (1 << i) == 0:
+                    tester |= 1 << i
+                    path.append(nums[i])
+                    back(idx+1)
+                    path.pop()
+                    tester ^= 1 << i
+        
+        back(0)
+        return ans
