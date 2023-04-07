@@ -8,18 +8,19 @@ class Solution:
         
         visited = set()
         
-        def dfs(node):
-            if node == destination:
+        stack = []
+        stack.append(source)
+        
+        while stack:
+            
+            curr = stack.pop()
+            visited.add(curr)
+            
+            if curr == destination:
                 return True
             
-            visited.add(node)
-            for neighbour in graph[node]:
-                if neighbour not in visited:
-                    found = dfs(neighbour)
-                    
-                    if found:
-                        return True
-                    
-            return False
-    
-        return dfs(source)
+            for i in graph[curr]:
+                if i not in visited:
+                    stack.append(i)
+        
+        return False
