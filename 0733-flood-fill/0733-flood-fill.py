@@ -1,9 +1,4 @@
 class Solution:
-    def self(sr,sc,image,color):
-        self.sr = sr
-        self.image = image
-        self.color = color
-        self.sc = sc
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
         self.sr = sr
         self.image = image
