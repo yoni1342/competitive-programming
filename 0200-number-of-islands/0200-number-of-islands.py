@@ -1,26 +1,24 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        visited = set()
         
-        directions = [(1,0),(-1,0),(0,1),(0,-1)]
-
-        def inbound(row,col):        
-            return (0 <= row < len(grid) and 0 <= col < len(grid[0]))
-        
-        def dfs(row, col):
-            visited.add((row,col))
+        def helper(i, j):
+            grid[i][j] = 1
             
-            for rowi, coli in directions:
-                nextrow = row + rowi
-                nextcol = col + coli
-                
-                if inbound(nextrow, nextcol) and (nextrow, nextcol) not in visited and grid[nextrow][nextcol] == "1":
-                    dfs(nextrow, nextcol)
+            if i>0 and grid[i-1][j] == '1':
+                helper(i-1, j)
+            if j>0 and grid[i][j-1] == '1':
+                helper(i, j-1)
+            if i<len(grid)-1 and grid[i+1][j] == "1":
+                helper(i+1, j)
+            if j < len(grid[0])-1 and grid[i][j+1] == '1':
+                helper(i, j+1)
+        
         ans = 0
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if (i, j) not in visited and grid[i][j] == "1":
-                    dfs(i, j)
+                
+                if grid[i][j] == "1":
                     ans+=1
+                    helper(i, j)
         
         return ans
