@@ -1,33 +1,24 @@
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
-        color = [0]*len(graph)
-        visited = set()
-        def Color(v, col):
-            if col == 1:
-                color[v] = -1
-            else:
-                color[v] = 1
+        color = [-1]*len(graph)
         
-        def dfs(v):
-            visited.add(v)
-            for i in graph[v]:
-                if color[i] == color[v]:
-                    return False
-                Color(i, color[v])
-            
-            for i in graph[v]:
-                if i not in visited:
-                    found = dfs(i)
+        
+        def dfs(node, col):
+            if color[node] != -1 and color[node] != col:
+                return False
+            if color[node] == -1:
+                color[node] = col
+                for v in graph[node]:
+                    found = dfs(v, int(not(col)))
                     if not found:
                         return False
             return True
+                
         
-        for i in range(len(graph)):
-            if color[i] == 0:
-                color[i] = 1
-            if i not in visited:
-                found = dfs(i)
+        
+        for node in range(len(graph)):
+            if color[node] == -1:
+                found = dfs(node, 0)
                 if not found:
                     return False
         return True
-     
