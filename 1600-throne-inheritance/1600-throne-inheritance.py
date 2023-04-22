@@ -2,8 +2,8 @@ class ThroneInheritance:
 
     def __init__(self, kingName: str):
         self.graph = defaultdict(list)
+        self.graph["start"].append(kingName)
         self.det = set()
-        self.kingName = kingName
 
     def birth(self, parentName: str, childName: str) -> None:
         self.graph[parentName].append(childName)
@@ -22,7 +22,7 @@ class ThroneInheritance:
                     dfs(i,visited,ans)
             return ans
         
-        return dfs(self.kingName,set(),[] if self.kingName in self.det else [self.kingName])
+        return dfs("start", set(), [])
     
             
                     
