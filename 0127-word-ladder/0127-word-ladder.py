@@ -17,8 +17,7 @@ class Solution:
                         continue
                     
                     newWord = word[:i] + letter + word[i+1:]
-                    # if newWord in visited:
-                    #     break
+                
                     if newWord in wordList and newWord not in visited:
                         if newWord == endWord:
                             return level+1
