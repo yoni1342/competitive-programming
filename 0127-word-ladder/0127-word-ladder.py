@@ -13,8 +13,8 @@ class Solution:
             
             for i in range(len(word)):
                 for letter in 'acbdefghijklmnopqrstuvwxyz':
-                    if letter == word[i]:
-                        continue
+                    # if letter == word[i]:
+                    #     continue
                     
                     newWord = word[:i] + letter + word[i+1:]
                 
