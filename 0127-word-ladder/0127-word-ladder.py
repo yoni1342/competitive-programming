@@ -13,8 +13,8 @@ class Solution:
             
             for i in range(len(word)):
                 for letter in 'acbdefghijklmnopqrstuvwxyz':
-                    # if letter == word[i]:
-                    #     continue
+                    if letter == word[i]:
+                        continue
                     
                     newWord = word[:i] + letter + word[i+1:]
                 
@@ -23,5 +23,5 @@ class Solution:
                             return level+1
                     
                         que.append((newWord, level+1))
-                    visited.add(newWord)
+                        visited.add(newWord)
         return 0
