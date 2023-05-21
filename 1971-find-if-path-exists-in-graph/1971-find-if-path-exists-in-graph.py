@@ -6,7 +6,10 @@ class Solution:
         def find(x):
             if x == rep[x]:
                 return x
-            return find(rep[x])
+            
+            r = find(rep[x])
+            rep[x] = r
+            return r
         
         def union(x, y):
             repX = find(x)            
