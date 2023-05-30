@@ -13,16 +13,16 @@ class Solution:
                 return float('inf')
             if num in dp:
                 return dp[num]
-            res = []
+            res = float('inf')
             for i in coins:
-                res.append(dfs(i+num)+1)
-            dp[num] = min(res)
-            return min(res)
+                res = min(res, dfs(i+num)+1)
+            dp[num] = res
+            return res
         
-        res = []
+        res = float('inf')
         for i in coins:
-            res.append(dfs(i)+1)
-        return -1 if min(res)==float('inf') else min(res)
+            res = min(res, dfs(i)+1)
+        return -1 if res==float('inf') else res
     
         
             
