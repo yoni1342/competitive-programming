@@ -1,13 +1,14 @@
 class Solution:
     def uniquePaths(self, m: int, n: int, mimo = {}) -> int:
-        if m==0 or n==0:
-            return 0
+        mimo = [[0]*n for _ in range(m)]
         
-        if m==1 and n == 1:
-            return 1
+        for i in range(n):
+            mimo[0][i] = 1
+        for i in range(m):
+            mimo[i][0] = 1
         
-        if (n, m) in mimo:
-            return mimo[(n,m)]
+        for i in range(1,m):
+            for j in range(1,n):
+                mimo[i][j] = mimo[i-1][j] + mimo[i][j-1]
         
-        mimo[(n,m)] = self.uniquePaths(m-1, n, mimo) + self.uniquePaths(m, n-1, mimo)
-        return mimo[(n,m)]
+        return mimo[m-1][n-1]
