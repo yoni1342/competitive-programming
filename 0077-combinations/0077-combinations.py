@@ -16,9 +16,6 @@ class Solution:
             
             return 
         
-        # if idx >= self.n:
-        #     return
-        
         for i in range(idx,self.n):
             
             combination.append(self.arr[i])
