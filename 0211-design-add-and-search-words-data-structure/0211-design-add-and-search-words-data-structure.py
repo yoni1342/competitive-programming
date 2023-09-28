@@ -1,43 +1,45 @@
 class TrieNode:
-
-    def __init__(self,val):
-        self.val = val
-        self.kids = defaultdict(None)
-        self.isEOW = False
-
+    def __init__(self):
+        self.children = {}
+        self.EOW = False
 class WordDictionary:
 
     def __init__(self):
-        self.root = TrieNode("*")
-        
+        self.root = TrieNode()
 
     def addWord(self, word: str) -> None:
         node = self.root
-
-        for char in word:
-            if char not in node.kids:
-                node.kids[char] = TrieNode(char)
-            node = node.kids[char]
-        node.isEOW = True
         
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            
+            node = node.children[char]
+        
+        node.EOW = True
 
     def search(self, word: str) -> bool:
-        return self.searchSubString(word,self.root)
+        return self.searchSubString(word, self.root)
 
-    def searchSubString(self,word,root):
+    def searchSubString(self, word, root):
         node = root
-
-        for index,char in enumerate(word):
+        
+        for index, char in enumerate(word):
             if char == ".":
                 found = False
-                for kid in node.kids.values():
-                    found = found or self.searchSubString(word[index+1:],kid)
-        
+                for i in node.children.values():
+                    found = found or self.searchSubString(word[index+1:], i)
                 return found
-                    
-            elif char not in node.kids:
+            
+            elif char not in node.children:
                 return False
             else:
-                node = node.kids[char]
-        
-        return node.isEOW
+                node = node.children[char]
+            
+        return node.EOW
+
+
+# Your WordDictionary object will be instantiated and called as such:
+# obj = WordDictionary()
+# obj.addWord(word)
+# param_2 = obj.search(word)
