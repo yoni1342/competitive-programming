@@ -1,22 +1,7 @@
-class TrieNode:
-    def __init__(self):
-        self.children = {}
-        self.EOW = False
-        
 class Solution:
     def __init__(self):
         self.Hash = defaultdict(list)
-        self.root = TrieNode()
         
-#     def insert(self, word, indx):
-#         node = self.root
-        
-#         for char in word:
-#             if char not in node.children:
-#                 node.children[char] = TrieNode()
-#             node = node.children[char]
-#         node.EOW = True
-    
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
         products.sort()
         
